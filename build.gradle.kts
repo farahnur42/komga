@@ -30,6 +30,9 @@ group = "org.gotson"
 allprojects {
   repositories {
     mavenCentral()
+    maven {
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+    }
   }
   apply(plugin = "org.jlleitschuh.gradle.ktlint")
   apply(plugin = "com.github.ben-manes.versions")
@@ -171,7 +174,7 @@ jreleaser {
           "komga:{{projectVersionMajor}}.x",
         )
       registries {
-        create("docker.io") { externalLogin = true }
+      //  create("docker.io") { externalLogin = true }
         create("ghcr.io") { externalLogin = true }
       }
       buildx {
@@ -180,8 +183,8 @@ jreleaser {
         platforms =
           listOf(
             "linux/amd64",
-            "linux/arm/v7",
-            "linux/arm64/v8",
+          //  "linux/arm/v7",
+          //  "linux/arm64/v8",
           )
       }
     }
